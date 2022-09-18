@@ -1,0 +1,15 @@
+{
+  "name": "email-validator",
+  "version": "1.0.0",
+  "author": "Marcus Hellams",
+  "private": true,
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "build":"yarn workspace ui build && yarn workspace api build",
+    "start":"node packages/api/build/index.js"
+  },
+  "engines": {
+    "node": "16.x",
+    "yarn": "1.x"
+  }
+}
