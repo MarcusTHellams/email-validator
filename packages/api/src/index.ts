@@ -12,15 +12,9 @@ import http from 'http';
 import path from 'path';
 import { buildSchema, Query, Resolver } from 'type-graphql';
 
-dotenv.config();
+import { EmailCheckResolver } from './email-check/email-check-resolver';
 
-@Resolver(() => String)
-class HelloWorld {
-  @Query(() => String, { name: 'helloWorld', description: 'Hello World' })
-  helloWorld() {
-    return 'Hello World';
-  }
-}
+dotenv.config();
 
 const { NODE_ENV, PORT = 4000 } = process.env;
 
@@ -34,7 +28,7 @@ const main = async () => {
   app.use(express.static(path.join(__dirname, '../../ui/dist')));
 
   const httpServer = http.createServer(app);
-  const schema = await buildSchema({ resolvers: [HelloWorld] });
+  const schema = await buildSchema({ resolvers: [EmailCheckResolver] });
   const server = new ApolloServer({
     introspection: true,
     schema,

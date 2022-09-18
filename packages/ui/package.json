@@ -14,12 +14,14 @@
     "test:coverage": "vitest --watch=false --silent --coverage"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.3.7",
     "bootstrap": "^5.2.1",
     "cross-fetch": "^3.1.5",
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "reactstrap": "^9.1.4"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.17.1",
