@@ -10,9 +10,7 @@ import * as dotenv from 'dotenv';
 import express from 'express';
 import http from 'http';
 import path from 'path';
-import { buildSchema, Query, Resolver } from 'type-graphql';
-
-import { EmailCheckResolver } from './email-check/email-check-resolver';
+import { buildSchema } from 'type-graphql';
 
 dotenv.config();
 
@@ -28,7 +26,7 @@ const main = async () => {
   app.use(express.static(path.join(__dirname, '../../ui/dist')));
 
   const httpServer = http.createServer(app);
-  const schema = await buildSchema({ resolvers: [EmailCheckResolver] });
+  const schema = await buildSchema({ resolvers: [path.join(__dirname, '/**/*.resolver.{ts,js}' )] });
   const server = new ApolloServer({
     introspection: true,
     schema,
