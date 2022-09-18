@@ -1,5 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
-import { gql } from 'graphql-request';
 import { useState } from 'react';
 import {
   Button,
@@ -14,28 +12,23 @@ import {
   Row,
 } from 'reactstrap';
 
+import { useEmailCheckQuery } from '../generated/graphql';
 import { graphqlClient } from '../graphqlClient';
 
-const EMAIL_CHECK = gql`
-  query emailCheck($email: String!) {
-    emailCheck(email: $email)
-  }
-`;
 export const EmailCheck = () => {
   const [email, setEmail] = useState('');
   const [value, setValue] = useState('');
 
-  const { data: validEmail } = useQuery<boolean, Error>({
-    queryKey: ['emailCheck', email],
-    async queryFn() {
-      return graphqlClient
-        .request(EMAIL_CHECK, {
-          email,
-        })
-        .then(({ emailCheck }) => emailCheck);
+  const { data } = useEmailCheckQuery(
+    graphqlClient,
+    {
+      email,
     },
-    enabled: !!email,
-  });
+    {
+      enabled: !!email,
+    }
+  );
+  const validEmail = data?.emailCheck;
 
   return (
     <>

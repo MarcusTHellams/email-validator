@@ -3,6 +3,7 @@ import { Col, Container, List, ListInlineItem, Row } from 'reactstrap';
 
 import { EmailCheck } from './email-check';
 import { ExampleComponent } from './example';
+import { User } from './users';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
               <ListInlineItem>
                 <Link to="/example">Example</Link>
               </ListInlineItem>
+              <ListInlineItem>
+                <Link to="/user">User</Link>
+              </ListInlineItem>
             </List>
           </Col>
         </Row>
@@ -24,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<EmailCheck />} />
         <Route path="/example" element={<ExampleComponent />} />
+        <Route path="/user" element={<User />} />
       </Routes>
     </>
   );
