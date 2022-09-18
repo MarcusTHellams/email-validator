@@ -5,7 +5,7 @@
   "private": true,
   "workspaces": ["packages/*"],
   "scripts": {
-    "build":"yarn workspace ui build && yarn workspace api build",
+    "build":"yarn workspace mth-ui-2 build && yarn workspace ui build && yarn workspace api build",
     "start":"node packages/api/build/index.js"
   },
   "engines": {

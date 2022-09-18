@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { gql } from 'graphql-request';
+import { Example } from 'mth-ui-2';
 import { useState } from 'react';
 import {
   Button,
@@ -43,6 +44,7 @@ function App() {
         <Row>
           <div className="d-flex justify-content-center">
             <Col sm="6">
+              <Example name='Marcus' />
               <Form
                 noValidate
                 onSubmit={(event) => {
